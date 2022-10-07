@@ -7,6 +7,7 @@ from itertools import product
 def Ward(D):
     #Crea matriz para algoritmo
     W=[]
+    unir=[0]
     for i in range(n):
         W.append([0]*n)
     for i in range(n):
@@ -32,6 +33,11 @@ def Ward(D):
     N[maxx]=N[maxx]+1
     N[minn]=0
     clus=n-1
+    unir=concatena(maxx,minn)
+    CLUS.append(unir)
+    CC.append(maxx)
+    CC.append(minn)
+    
     #Crea nueva matriz de distancias
     Dcopy=[]
     for i in range(n):
@@ -119,8 +125,9 @@ N= []*n
 for i in range(n):
     N[i]=1
 
-#Guarda los clusters originales
-clus=n
+#Guarda los clusters para ward y para la configuracion
+CC=[]
+CLUS=[]
 #Primera itereacion de ward
 p=0
 if k==1:
@@ -134,6 +141,9 @@ else:
         p=p+1
         if p==k:
             break
+for i in range(n):
+	if (i not in CC)==FALSE:
+		CLUS.append(i)
 print()
 print("La configuracion es ")
-imp(D)
+imp(CLUS)
